@@ -74,10 +74,18 @@ class List extends React.Component {
     handleInput = (e) => {
         if(e.target.name === "minAge") {
             this.setState({minAge: e.target.value});
+
+            let currentUrlParams = new URLSearchParams(window.location.search);
+            currentUrlParams.set('minAge', e.target.value);
+            this.props.history.push(window.location.pathname + "?" + currentUrlParams.toString());
         }
 
         if(e.target.name === "maxAge") {
             this.setState({maxAge: e.target.value});
+
+            let currentUrlParams = new URLSearchParams(window.location.search);
+            currentUrlParams.set('maxAge', e.target.value);
+            this.props.history.push(window.location.pathname + "?" + currentUrlParams.toString());
         }
     }
 
